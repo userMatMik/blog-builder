@@ -1,37 +1,61 @@
 export default function AdditionalPage() {
   return (
     <s-page heading="Additional page">
-      <s-section heading="Multiple pages">
-        <s-paragraph>
-          The app template comes with an additional page which demonstrates how
-          to create multiple pages within app navigation using{" "}
-          <s-link
-            href="https://shopify.dev/docs/apps/tools/app-bridge"
-            target="_blank"
-          >
-            App Bridge
-          </s-link>
-          .
-        </s-paragraph>
-        <s-paragraph>
-          To create your own page and have it show up in the app navigation, add
-          a page inside <code>app/routes</code>, and a link to it in the{" "}
-          <code>&lt;ui-nav-menu&gt;</code> component found in{" "}
-          <code>app/routes/app.jsx</code>.
-        </s-paragraph>
-      </s-section>
-      <s-section slot="aside" heading="Resources">
-        <s-unordered-list>
-          <s-list-item>
-            <s-link
-              href="https://shopify.dev/docs/apps/design-guidelines/navigation#app-nav"
-              target="_blank"
-            >
-              App nav best practices
-            </s-link>
-          </s-list-item>
-        </s-unordered-list>
-      </s-section>
+      <s-section heading="Preferences">
+  <s-box border="base" borderRadius="base">
+    <s-clickable
+      padding="small-100"
+      href="#"
+      accessibilityLabel="Configure shipping methods, rates, and fulfillment options"
+    >
+      <s-grid gridTemplateColumns="1fr auto" alignItems="center" gap="base">
+        <s-box>
+          <s-heading>Shipping & fulfillment</s-heading>
+          <s-paragraph color="subdued">
+            Shipping methods, rates, zones, and fulfillment preferences.
+          </s-paragraph>
+        </s-box>
+        <s-icon type="chevron-right" />
+      </s-grid>
+    </s-clickable>
+    <s-box paddingInline="small-100">
+      <s-divider />
+    </s-box>
+    <s-clickable
+      padding="small-100"
+      href="#"
+      accessibilityLabel="Configure product defaults, customer experience, and catalog settings"
+    >
+      <s-grid gridTemplateColumns="1fr auto" alignItems="center" gap="base">
+        <s-box>
+          <s-heading>Products & catalog</s-heading>
+          <s-paragraph color="subdued">
+            Product defaults, customer experience, and catalog display options.
+          </s-paragraph>
+        </s-box>
+        <s-icon type="chevron-right" />
+      </s-grid>
+    </s-clickable>
+    <s-box paddingInline="small-100">
+      <s-divider />
+    </s-box>
+    <s-clickable
+      padding="small-100"
+      href="#"
+      accessibilityLabel="Manage customer support settings and help resources"
+    >
+      <s-grid gridTemplateColumns="1fr auto" alignItems="center" gap="base">
+        <s-box>
+          <s-heading>Customer support</s-heading>
+          <s-paragraph color="subdued">
+            Support settings, help resources, and customer service tools.
+          </s-paragraph>
+        </s-box>
+        <s-icon type="chevron-right" />
+      </s-grid>
+    </s-clickable>
+  </s-box>
+</s-section>
     </s-page>
   );
 }

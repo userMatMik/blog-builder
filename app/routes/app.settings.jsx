@@ -1,6 +1,33 @@
-import { Outlet, Link, useLocation } from "react-router";
+import { Outlet, Link, useLocation, useLoaderData } from "react-router";
+import { authenticate } from "../shopify.server";
+
+export async function loader({request}) {
+  const { admin, shop, session } = await authenticate.admin(request);
+
+  const shopResponse = await admin.graphql(`
+      query {
+        shop {
+          id
+          name
+          myshopifyDomain
+        }
+      }
+    `);
+
+  const {data: shopData} = await shopResponse.json();
+
+
+  return { admin, shop, session, shopData }
+}
 
 export default function SettingsLayout() {
+
+  const { admin, shop, session, shopData } = useLoaderData()
+
+  console.log("admin: ", admin)
+  console.log("shop: ", shop)
+  console.log("session: ", session)
+  console.log("shopData: ", shopData)
 
     const location = useLocation();
     

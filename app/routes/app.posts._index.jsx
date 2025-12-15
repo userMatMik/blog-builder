@@ -98,6 +98,16 @@ function AllPosts() {
 
     return (
       <s-section padding="none">
+        <s-app-window id="post-editor" src="/app/posts/new">
+        </s-app-window>
+
+        <s-button 
+          // onclick="shopify.appWindow.show('post-editor')"
+          variant="primary"
+          command="--show" commandFor="post-editor"
+        >
+          Create post
+        </s-button>
         <s-table>
           <s-grid slot="filters" gap="small-200" gridTemplateColumns="1fr auto">
             <s-text-field

@@ -1,6 +1,20 @@
 export default function AdditionalPage() {
   return (
     <s-page heading="Additional page">
+      <s-app-window
+        id="additional-editor"
+        src="/app/additional/new"  // ta trasa będzie w Twojej appce, patrz sekcja 2
+      ></s-app-window>
+
+      {/* Secondary action: New article – pokazuje app window */}
+      <s-button
+        slot="secondary-actions"
+        variant="primary"
+        command="--show"
+        commandFor="additional-editor"
+      >
+        New article
+      </s-button>
       <s-section heading="Multiple pages">
         <s-paragraph>
           The app template comes with an additional page which demonstrates how

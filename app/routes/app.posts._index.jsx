@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, Link } from "react-router";
 import { authenticate } from "../shopify.server";
 import { formatTimeAgo } from "../utility/utility"
 
@@ -92,24 +92,44 @@ export async function loader({request}) {
 
 function AllPosts() {
 
-    const { blogs, articles, currentBlog } = useLoaderData();
+  const { blogs, articles, currentBlog } = useLoaderData();
 
-    console.log(articles)
+  console.log(articles)
 
-    return (
-      <s-section padding="none">
-        <s-app-window id="post-editor" src="/app/posts/new">
-        </s-app-window>
-
-        <s-button 
-          // onclick="shopify.appWindow.show('post-editor')"
-          variant="primary"
-          command="--show" commandFor="post-editor"
+  return (
+    <>
+      <s-page>
+        <s-stack
+            slot="breadcrumb-actions"
+            direction="inline"
+            gap="small-200"
+            alignItems="center"
+          >
+          <s-link href="/app" accessibilityLabel="Go to app home">
+            <s-icon type="home" size="small"></s-icon>
+          </s-link>
+          <s-text color="subdued">Blog posts</s-text>
+        </s-stack>
+        <s-app-window id="post-editor" src="/app/posts/new"></s-app-window>  
+        <s-button
+            slot="secondary-actions"
+            variant="primary"
+            command="--show"
+            commandFor="post-editor"    
         >
-          Create post
+            Create post
         </s-button>
+      </s-page>
+      
+      <s-section padding="none">
+        
+
         <s-table>
-          <s-grid slot="filters" gap="small-200" gridTemplateColumns="1fr auto">
+          <s-grid
+            slot="filters"
+            gap="small-200"
+            gridTemplateColumns="1fr auto"
+          >
             <s-text-field
               label="Search articles"
               labelAccessibilityVisibility="exclusive"
@@ -127,29 +147,10 @@ function AllPosts() {
               <s-text>Sort</s-text>
             </s-tooltip>
             <s-popover id="sort-actions">
-              <s-stack gap="none">
-                <s-box padding="small">
-                  <s-choice-list label="Sort by" name="Sort by">
-                    <s-choice value="puzzle-name" selected>
-                      Puzzle name
-                    </s-choice>
-                    <s-choice value="pieces">Pieces</s-choice>
-                    <s-choice value="created">Created</s-choice>
-                    <s-choice value="status">Status</s-choice>
-                  </s-choice-list>
-                </s-box>
-                <s-divider />
-                <s-box padding="small">
-                  <s-choice-list label="Order by" name="Order by">
-                    <s-choice value="product-title" selected>
-                      A-Z
-                    </s-choice>
-                    <s-choice value="created">Z-A</s-choice>
-                  </s-choice-list>
-                </s-box>
-              </s-stack>
+              {/* ... Twój kod sortowania ... */}
             </s-popover>
           </s-grid>
+
           <s-table-header-row>
             <s-table-header listSlot="primary">Title</s-table-header>
             <s-table-header>Author</s-table-header>
@@ -157,15 +158,9 @@ function AllPosts() {
             <s-table-header>Last update</s-table-header>
             <s-table-header listSlot="secondary">Action</s-table-header>
           </s-table-header-row>
-          {/* <s-table-header-row>
-            <s-table-header>Name</s-table-header>
-            <s-table-header>Email</s-table-header>
-            <s-table-header format="numeric">Orders placed</s-table-header>
-            <s-table-header>Phone</s-table-header>
-          </s-table-header-row> */}
-          <s-table-body>
 
-            {articles.map(article => (
+          <s-table-body>
+            {articles.map((article) => (
               <s-table-row>
                 <s-table-cell>
                   <s-stack direction="inline" gap="small" alignItems="center">
@@ -190,7 +185,7 @@ function AllPosts() {
                   {article.author.name}
                 </s-table-cell>
                 <s-table-cell>
-                  {article.isPublished ? 
+                  {article.isPublished ?
                     <s-badge color="base" tone="success">
                       Active
                     </s-badge> :
@@ -212,7 +207,7 @@ function AllPosts() {
                       console.log('Aricle title:', article.title)
                     }}
                   >
-        
+      
                   </s-button>
                   <s-menu id="article-menu" accessibilityLabel="Product actions">
                     <s-button icon="edit" onClick={(event) => console.log('Target:', event.currentTarget)}>Edit</s-button>
@@ -225,7 +220,8 @@ function AllPosts() {
           </s-table-body>
         </s-table>
       </s-section>
-    );
+    </>
+  );
 }
 
 export default AllPosts;

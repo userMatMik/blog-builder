@@ -1,0 +1,63 @@
+.editorRoot {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+}
+
+/* Grid poniżej TopBar */
+.mainContentGrid {
+  flex: 1 1 auto;
+  min-height: 0;
+  /* border: 1px solid blue; */
+  /* background-color: blue; */
+}
+
+/* Desktop domyślnie (np. >= 768px) */
+.desktopOnly {
+  display: block;
+}
+.mobileOnly {
+  display: none;
+}
+
+/* Wszystkie grid‑itemy rozciągają się na pełną wysokość rzędu */
+.sidebar,
+.slidingPanel,
+.editorArea {
+  height: 100%;
+  min-height: 0;
+}
+
+/* Sidebar: zwykle bez scrolla */
+.sidebar {
+  /* border: 1px solid green; */
+}
+
+/* SlidingPanel: ma własny scroll */
+.slidingPanel {
+  overflow: auto;
+  /* border: 1px solid yellow;
+  background-color: orange; */
+}
+
+/* EditorArea: ma własny scroll */
+.editorArea {
+  overflow: auto;
+  /* border: 1px solid black; */
+}
+
+/* Mobile (np. do 768px) */
+@media (max-width: 768px) {
+  .mainContentGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+}

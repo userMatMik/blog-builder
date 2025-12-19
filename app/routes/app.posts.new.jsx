@@ -1,7 +1,7 @@
 
 // import { LoaderFunctionArgs, ActionFunctionArgs } from 'react-router';
 import { useLoaderData, useNavigation, Form, redirect } from 'react-router';
-import Postbuilder from "./components/Postbuilder";
+import EditorPage from "../components/editor/EditorPage"
 
 
 
@@ -33,7 +33,7 @@ function NewPostPage() {
         </s-button>
       </s-page>
       <div>
-        <Postbuilder />
+        <EditorPage />
       </div>
     </>
   );

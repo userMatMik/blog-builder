@@ -5,7 +5,6 @@ import { boundary } from "@shopify/shopify-app-react-router/server";
 
 import { authenticate } from "../shopify.server";
 
-import Postbuilder, { PostBuilder } from "./Components/PostBuilder"
 // import { createPost } from "../models/Post.server"; // TODO
 
 // Loader: np. typy bloków, domyślne wartości itd.
@@ -57,7 +56,9 @@ export default function NewPostPage() {
             Cancel
         </s-button>
       </s-page>
-      <Postbuilder />
+      <div>
+        Test content
+      </div>
     </>
     
     

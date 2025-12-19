@@ -1,5 +1,4 @@
 import {useLoaderData, useNavigation} from "react-router";
-import Postbuilder from "./components/Postbuilder";
 
 // Loader – przykład
 export async function loader() {
@@ -33,10 +32,7 @@ export default function AppFullScreenPostEditor() {
         </header>
 
         <main className="app-fullscreen-main">
-          <Postbuilder
-            availableBlocks={availableBlocks}
-            isSubmitting={isSubmitting}
-          />
+          <div>Test content</div>
         </main>
       </div>
     </>
